@@ -29,7 +29,7 @@ npm run node_4
 npm run node_5
 ```
 
-### postman api contorl 
+### postman api local control  
 
 ```console
 localhost 3001
