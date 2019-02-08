@@ -13,7 +13,7 @@
 	<div class="container" ng-controller="MainController">
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
-				<h1 id="page-title">Block Explorer</h1>
+				<h1 id="page-title">Blockchain Map</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -26,16 +26,16 @@
 						<select class="form-control" ng-model="searchType">
 							<option value="block">Block Hash</option>
 							<option value="transaction">Transaction ID</option>
-							<option value="address">Address</option>
+							<option value="address">Block Address</option>
 						</select>
 					</div>
 					<button
 						type="submit"
 						class="btn btn-primary margin-auto btn-search">
-							Search
+							검색
 					</button>
 					<p ng-if="!block && !transaction && !addressData && initialSearchMade" class="no-data-text">
-						No data found for search.
+						Block이 존재 하지 않습니다.
 					</p>
 				</form>
 			</div>
@@ -80,11 +80,11 @@
 				<table class="table table-striped" ng-if="transaction">
 					<tbody>
 						<tr>	
-							<td class="bold">Sender</td>
+							<td class="bold">보낸사람</td>
 							<td>{{ transaction.sender }}</td>
 						</tr>
 						<tr>	
-							<td class="bold">Recipient</td>
+							<td class="bold">받은사람</td>
 							<td>{{ transaction.recipient }}</td>
 						</tr>
 						<tr>	
@@ -101,8 +101,8 @@
 				<table class="table table-striped" ng-if="addressData">
 					<thead>
 						<tr>
-							<th scope="col">Sender</th>
-							<th scope="col">Recipient</th>
+							<th scope="col">보낸사람</th>
+							<th scope="col">받은사람</th>
 							<th scope="col">Amount</th>
 						</tr>
 					</thead>
@@ -171,7 +171,7 @@
 	<style type="text/css">
 		html, body {
 			min-height: 100vh;
-			background-color: #f49292;
+			background-color: #535b7e;
 		}
 		.container {
 			padding-top: 50px;
@@ -180,6 +180,7 @@
 		#page-title {
 			text-align: center;
 			margin-bottom: 40px;
+			color:rgb(216, 216, 216);
 		}
 		.table-title {
 			margin-bottom: 20px;
@@ -200,6 +201,8 @@
 		}
 		.btn-search {
 			margin-bottom: 50px;
+			background-color:rgb(77, 124, 154);
+			border: none;
 		}
 		.bold {
 			font-weight: 700;
