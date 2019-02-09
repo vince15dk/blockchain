@@ -1,6 +1,6 @@
 # `Blockchain Node.js`
 
-<image src="images/collab.png" width=500>
+<image src="images/collab.png" width=700>
 
 ## This app is to emulate blockchain ecosystem in [node.js](http://nodejs.org)
 
@@ -14,10 +14,11 @@ Porting 5 diffrenet local ports declared in package.json, each port handles the 
 
 Each end point can be tested by postman 
 
-* /transaction-broadcast
-* /register-and-broadcast-node
-* /mine
-* /consensus 
+* /transaction-broadcast (Postman)
+* /register-and-broadcast-node (Postman)
+* /mine (on browser)
+* /consensus (on browser)
+* /block-explorer (on browser)
 
 Enjoy!
 
@@ -39,20 +40,27 @@ npm run node_5
 
 <br/>
 
+```bash
+Get /localhost:3001/blockchain
+```
+* Explore the state of blockchain in each node(port)
+
+<br/>
+
 ### postman Rest API Control  
 ```
 Post /localhost:3001/register-and-broadcast-node 
 ```
-* Send JSON from POST method with body "newNodeUrl":"http://localhost:3002~5
-* This will chain all of nodes set in different port
+* Send JSON from POST method with body {"newNodeUrl":"http://localhost:3002~5"}
+* This will chain all of nodes set in the different port
 
 <br/>
 
 ```
 Post /transaction-broadcast
 ```
-* You can send amount of bitcoin from sender to recipient in any node port, still on pending state {"amount":1000, sender:"id", recipient:"id"}
-* this will notify all nodes of the pending trasaction
+* You can send amount of bitcoin including sender and recipient on any port, on pending state {"amount":1000, sender:"id", recipient:"id"}
+* this will notify all nodes of the trasaction (still pending)
   
 <br/>
 Browser
