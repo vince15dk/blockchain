@@ -1,6 +1,6 @@
 # `Blockchain Node.js`
 
-<image src="images/collab.png" width=700>
+<image src="images/collab.png" width=500>
 
 ## This app is to emulate blockchain ecosystem in [node.js](http://nodejs.org)
 
@@ -10,12 +10,13 @@
 * Backend - Node.js
 * Frontend - Angular
   
-Porting 5 diffrenet local ports declared in package.json, each port handles the process of block chaining as if it is chained as seriese of the nodes in the real world.
+Porting 5 diffrenet local ports declared in package.json<br/>
+Each port(node) handles the process of blockchain as if being chained as series of the nodes in the real world.
 
 Each end point can be tested by postman 
 
-* /transaction-broadcast (Postman)
-* /register-and-broadcast-node (Postman)
+* /transaction-broadcast (postman)
+* /register-and-broadcast-node (postman)
 * /mine (on browser)
 * /consensus (on browser)
 * /block-explorer (on browser)
