@@ -6,20 +6,17 @@
 
 [node.js](http://nodejs.org)로 구현한 블록체인 애플리케이션
 <br/>
-
-* Backend - Node.js
-* Frontend - Angular
   
-Porting 5 diffrenet local ports declared in package.json<br/>
-Each port(node) handles the process of blockchain as if being chained as series of the nodes in the real world.
+Running 5 diffrenet local servers(ports) declared in package.json<br/>
+Each server(port) handles the blockchain process as if being chained as series of the nodes in the real world blockchain application.
 
-Each end point can be tested by postman 
+Each end point API can be tested by postman and browser (UI page added by Angular) 
 
-* /transaction-broadcast (postman)
-* /register-and-broadcast-node (postman)
-* /mine (on browser)
-* /consensus (on browser)
-* /block-explorer (on browser)
+* /transaction-broadcast (postman) -- transaction of bitcoin on pending state 
+* /register-and-broadcast-node (postman) -- connection of servers(nodes)
+* /mine (on browser) -- mining successfully carried
+* /consensus (on browser) -- addition of new server to the current nodes ecosystem
+* /block-explorer (on browser) -- UI page 
 
 Enjoy!
 
@@ -30,7 +27,7 @@ npm install
 ```
 <br/>
 
-### open 5 separate bashes to run nodes on different port from 3001~3005 
+### open 5 separate bashes to run each node on different port from 3001~3005 
 ```bash
 npm run node_1
 npm run node_2
@@ -44,7 +41,7 @@ npm run node_5
 ```bash
 Get /localhost:3001/blockchain
 ```
-* Explore the state of blockchain in each node(port)
+* Explore the current state of blockchain
 
 <br/>
 
@@ -52,16 +49,15 @@ Get /localhost:3001/blockchain
 ```
 Post /localhost:3001/register-and-broadcast-node 
 ```
-* Send JSON from POST method with body {"newNodeUrl":"http://localhost:3002~5"}
-* This will chain all of nodes set in the different port
-
+* Postman with JSON body {"newNodeUrl":"http://localhost:3002~5"}
+* Connection of all servers(nodes) together
 <br/>
 
 ```
 Post /transaction-broadcast
 ```
-* You can send amount of bitcoin including sender and recipient on any port, on pending state {"amount":1000, sender:"id", recipient:"id"}
-* this will notify all nodes of the trasaction (still pending)
+* Postman with JSON body {"amount":1000, sender:"id", recipient:"id"} -- send bitcoin
+* This automatically adds the transaction(on pending) to all of the nodes 
   
 <br/>
 Browser
@@ -69,16 +65,16 @@ Browser
 ```
 Get /mine
 ```
-* On any port of url, this will generate mining process and successfully add the block on each node, committing all transactions on pending
+* Carrying a succesful mining process as committing all of the transactions 
   
 <br/>
 Browser
 
 ```
-Get /consensus
+Get //localhost:{{new port}}/consensus
 ```
-* When a new node added with different port, this will copy all of the transaction history, blocks, and nodes to the new node
-* before making this, make sure to chain the new node, executing "/localhost:3001/register-and-broadcast-node" beforehand  
+* Add the past record of all blockchains to the new node and share the current state of other nodes 
+* Make sure to register a new node to other nodes beforhand, executing "/localhost:3001/register-and-broadcast-node"
 
 <br/>
 
@@ -87,4 +83,4 @@ Browser
 Get /block-explorer
 ```
 
-* You can explore the blocks in search of transaction history, hash, and block Id
+* You can explore the blocks in search of the transaction record, hash, and user history
